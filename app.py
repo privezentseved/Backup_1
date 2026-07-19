@@ -1,7 +1,10 @@
 from flask import Flask
 import os
+import time
 
 app = Flask(__name__)
+start_time = time.time()
+
 
 # Главная страница
 @app.route('/')
@@ -28,6 +31,12 @@ def show_logs():
 @app.route('/version')
 def version():
     return 'v1.0.0'
+
+@app.route('/uptime')
+def uptime():
+    seconds = int(time.time() - start_time)
+    return f'<h1>Uptime: {seconds} секунд</h1>'
+
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000, debug=True)
