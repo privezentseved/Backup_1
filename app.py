@@ -24,5 +24,10 @@ def show_logs():
     except FileNotFoundError:
         return 'Файл логов пока не найден. Добавь туда что-нибудь!'
 
+# Это конфликтный блок, добавленный в main
+@app.route('/version')
+def version():
+    return 'v1.0.0'
+
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000, debug=True)
